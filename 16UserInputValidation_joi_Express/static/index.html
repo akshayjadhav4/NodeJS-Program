@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+
+    <title>HTTP POST</title>
+  </head>
+  <body>
+    <form action="/" method="POST" id="form">
+      <div class="form-group">
+        <label for="">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="email"
+          
+          aria-describedby="helpId"
+          placeholder=""
+        />
+      </div>
+      <div class="form-group">
+        <label for="">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          
+          placeholder=""
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">SUBMIT</button>
+    </form>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(() => {
+        $('#form').submit((e) => {
+          e.preventDefault();
+          $.ajax({
+            url: '/',
+            type: 'post',
+            contentType: 'application/json',
+            data: JSON.stringify($('#form').serializeArray()),
+            success : (response) => {
+              // console.log('Successful');
+              console.log(response);
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
